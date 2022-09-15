@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap");
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Rubik;
+}
+
+// color variables
+
+// primary
+$primary-color: hsl(246, 80%, 60%);
+$secondary-color: hsl(226, 43%, 10%);
+$tertiary-color: hsl(235, 46%, 20%);
+$desaturated-color: hsl(235, 45%, 61%);
+$pale-color: hsl(236, 100%, 87%);
+
+// secondary
+$work-color: hsl(15, 100%, 70%);
+$play-color: hsl(195, 74%, 62%);
+$study-color: hsl(348, 100%, 68%);
+$exercise-color: hsl(145, 58%, 55%);
+$social-color: hsl(264, 64%, 52%);
+$selfcare-color: hsl(43, 84%, 65%);
+
+//border-padding-etc...
+$left-padding: 20px;
+$border-black: 1px solid black;
+$radius-border: 1em;
+
+body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: $secondary-color;
+  color: white;
+}
+
+.dashboard {
+  display: grid;
+  width: 70%;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 30px;
+  border-radius: $radius-border;
+  grid-template-areas:
+    "user work play study"
+    "user exercise social selfcare";
+}
+
+.userbox {
+  grid-area: user;
+  display: grid;
+  grid-template-rows: 80% 20%;
+  align-items: center;
+  border-radius: $radius-border;
+  height: 100%;
+  overflow: hidden;
+  gap: 0;
+  background-color: $tertiary-color;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: $left-padding;
+  border-radius: $radius-border;
+  align-self: flex-start;
+  background-color: $primary-color;
+  height: 90%;
+  img {
+    width: 50px;
+    height: 50px;
+    border: white;
+    margin: 30px 0;
+  }
+
+  &__report {
+    font-size: 0.8em;
+    color: $pale-color;
+  }
+
+  &__name {
+    font-size: 2.4em;
+    margin-bottom: 50px;
+    font-weight: 300;
+  }
+}
+
+.activity {
+  border-radius: $radius-border;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: $left-padding;
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0 20px 20px;
+  background-color: $tertiary-color;
+
+  img {
+    width: 50px;
+  }
+
+  &__header {
+    display: flex;
+    background-color: $work-color;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: flex-end;
+    &::after {
+      content: "";
+      position: absolute;
+      height: 20px;
+      background-color: $tertiary-color;
+      border-radius: $radius-border;
+      width: 100%;
+      bottom: -10px;
+    }
+  }
+
+  &__title {
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 20px;
+    z-index: 99;
+  }
+
+  &__hours {
+    font-size: 3em;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  &__week {
+    font-size: 0.8em;
+    color: $pale-color;
+  }
+}
+
+.dates {
+  padding-left: $left-padding;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: flex-end;
+  // border: 1px solid white;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  color: $desaturated-color;
+
+  p {
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+}

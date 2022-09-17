@@ -63,7 +63,6 @@ body {
 }
 .user__name {
   font-size: 2.4em;
-  margin-bottom: 50px;
   font-weight: 300;
 }
 
@@ -73,23 +72,37 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 20px;
   position: relative;
   overflow: hidden;
-  padding: 60px 0 20px 20px;
+  padding: 60px 20px 20px 20px;
   background-color: hsl(235deg, 46%, 20%);
-}
-.activity img {
-  width: 70px;
 }
 .activity__header {
   display: flex;
-  background-color: hsl(15deg, 100%, 70%);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 70px;
   justify-content: flex-end;
+}
+.activity__header--work {
+  background-color: hsl(15deg, 100%, 70%);
+}
+.activity__header--play {
+  background-color: hsl(195deg, 74%, 62%);
+}
+.activity__header--study {
+  background-color: hsl(348deg, 100%, 68%);
+}
+.activity__header--exercise {
+  background-color: hsl(145deg, 58%, 55%);
+}
+.activity__header--social {
+  background-color: hsl(264deg, 64%, 52%);
+}
+.activity__header--selfcare {
+  background-color: hsl(43deg, 84%, 65%);
 }
 .activity__header::after {
   content: "";
@@ -98,20 +111,22 @@ body {
   background-color: hsl(235deg, 46%, 20%);
   border-radius: 1em;
   width: 100%;
-  bottom: -20px;
+  bottom: -15px;
 }
 .activity__title {
   font-size: 1em;
   font-weight: 500;
   margin-bottom: 20px;
   z-index: 99;
+  display: flex;
+  justify-content: space-between;
 }
-.activity__hours {
+.activity__current {
   font-size: 3em;
   font-weight: 300;
   margin-bottom: 10px;
 }
-.activity__week {
+.activity-previous {
   font-size: 0.8em;
   color: hsl(236deg, 100%, 87%);
 }
@@ -122,13 +137,22 @@ body {
   flex-direction: column;
   justify-content: center;
   align-self: flex-end;
-  padding-top: 20px;
-  padding-bottom: 10px;
   color: hsl(235deg, 45%, 61%);
+  padding-bottom: 10px;
 }
 .dates p {
   cursor: pointer;
   margin-bottom: 10px;
+  width: fit-content;
+  transition: 0.2s ease-in-out;
+}
+.dates p:hover {
+  color: white;
+}
+
+/* JS added classes */
+.active {
+  color: white;
 }
 
 /*# sourceMappingURL=style.css.map */

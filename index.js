@@ -1,25 +1,14 @@
-const dashboard = document.querySelector(".dashboard");
+const dashboard = document.querySelector(".dashboard__numbers");
 
 const getData = (timevalue) => {
   fetch("data.json")
     .then((res) => res.json())
     .then((data) => {
       dashboard.innerHTML = "";
-      dashboard.innerHTML += `
-      <div class="userbox">
-        <div class="user">
-          <img src="./images/image-jeremy.png" alt="Jeremy Robson" />
-          <p class="user__report">Report for</p>
-          <p class="user__name">Jeremy Robson</p>
-        </div>
-        <div class="dates">
-          <p id="daily" onclick="active('daily')">Daily</p>
-          <p id="weekly" onclick="active('weekly')">Weekly</p>
-          <p id="monthly" onclick="active('monthly')">Monthly</p>
-        </div>
-      </div>`;
+
       for (let i = 0; i < data.length; i++) {
         const regx = /\s/;
+
         dashboard.innerHTML += `
             <div class="activity">
             <div class="activity__header activity__header--${data[i].title
@@ -29,12 +18,14 @@ const getData = (timevalue) => {
               .toLowerCase()
               .replace(regx, "-")}.svg" alt="cartable"></div>
             <h2 class="activity__title">${data[i].title}</h2>
+            <div class="activity-flex">
             <h3 class="activity__current">${
               data[i].timeframes[`${timevalue}`].current
             }hrs</h3>
             <p class="activity-previous">Last Week - ${
               data[i].timeframes[`${timevalue}`].previous
             }hrs</p>
+            </div>
           </div>
             `;
       }
@@ -70,7 +61,6 @@ const active = (timevalue) => {
   }
 };
 
-window.onload = async () => {
-  await getData("weekly");
-  console.log("yes");
+window.onload = () => {
+  active("weekly");
 };
